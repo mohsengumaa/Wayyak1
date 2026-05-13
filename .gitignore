@@ -1,0 +1,10 @@
+.venv/
+frontend/.next/
+frontend/node_modules/
+backend/node_modules/
+.env
+*.pyc
+__pycache__/*.zip 
+*.exe 
+*.zip 
+*.exe 

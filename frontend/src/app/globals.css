@@ -1,0 +1,150 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f5fbff;
+  --foreground: #111111;
+  --mb-primary: #0f766e;
+  --mb-secondary: #0ea5a4;
+  --mb-accent: #0f4c81;
+  --mb-muted: #8aa6b2;
+  --mb-dark: #0b3b3a;
+  --mb-highlight: #14b8a6;
+  --mb-highlight-hover: #0d9488;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-mb-primary: var(--mb-primary);
+  --color-mb-secondary: var(--mb-secondary);
+  --color-mb-accent: var(--mb-accent);
+  --color-mb-muted: var(--mb-muted);
+  --color-mb-dark: var(--mb-dark);
+  --color-mb-highlight: var(--mb-highlight);
+  --color-mb-highlight-hover: var(--mb-highlight-hover);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.text-zinc-400,
+.text-zinc-500,
+.text-zinc-600 {
+  color: #1f1f1f;
+}
+
+.mb-card {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  border: 1px solid color-mix(in srgb, var(--mb-muted) 35%, #ffffff 65%);
+  box-shadow: 0 10px 30px -25px color-mix(in srgb, var(--mb-accent) 50%, transparent);
+  color: #000000;
+}
+
+.mb-card-dark {
+  background: linear-gradient(
+      135deg,
+      color-mix(in srgb, var(--mb-primary) 25%, transparent),
+      color-mix(in srgb, var(--mb-dark) 40%, transparent)
+    ),
+    #1f1f1f;
+  border: 1px solid color-mix(in srgb, var(--mb-muted) 25%, transparent);
+  box-shadow: 0 12px 30px -20px color-mix(in srgb, var(--mb-primary) 60%, transparent);
+  color: #f7f7f7;
+}
+
+.mb-tech-border {
+  border-image: linear-gradient(120deg, var(--mb-primary), var(--mb-secondary)) 1;
+}
+
+.mb-ai-bg {
+  background:
+    radial-gradient(circle at 15% 20%, color-mix(in srgb, var(--mb-secondary) 12%, transparent), transparent 45%),
+    radial-gradient(circle at 85% 10%, color-mix(in srgb, var(--mb-primary) 12%, transparent), transparent 40%),
+    linear-gradient(180deg, #ecfdf5 0%, #f0fdf4 100%);
+}
+
+.mb-card-ai {
+  position: relative;
+  overflow: hidden;
+}
+
+.mb-card-ai::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent, color-mix(in srgb, var(--mb-secondary) 10%, transparent), transparent);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* Raised fields (voucher-style) for forms across the app */
+.mb-input-raised {
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--mb-primary) 22%, #e4e4e7 78%);
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 2px 6px -2px color-mix(in srgb, var(--mb-dark) 25%, transparent);
+}
+.mb-input-raised:focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--mb-primary) 45%, #a7f3d0);
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 0 0 3px color-mix(in srgb, var(--mb-secondary) 25%, transparent);
+}
+
+/* Apply voucher-like raised controls across app pages */
+.mb-app-theme :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea) {
+  border-radius: 0.5rem;
+  border: 1px solid color-mix(in srgb, var(--mb-primary) 24%, #e4e4e7 76%) !important;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 3px 10px -4px color-mix(in srgb, var(--mb-dark) 28%, transparent) !important;
+}
+
+.mb-app-theme :where(input:not([type="checkbox"]):not([type="radio"]), select, textarea):focus {
+  outline: none;
+  border-color: color-mix(in srgb, var(--mb-primary) 45%, #a7f3d0) !important;
+  box-shadow:
+    inset 0 1px 0 #ffffff,
+    0 0 0 3px color-mix(in srgb, var(--mb-secondary) 25%, transparent) !important;
+}
+
+/* Unify card sections to voucher-like look across pages */
+.mb-app-theme :where(.rounded-lg.border, .rounded-md.border) {
+  border-color: color-mix(in srgb, var(--mb-primary) 16%, #d4d4d8 84%);
+}
+
+.mb-app-theme :where(.rounded-lg.bg-white, .rounded-md.bg-white, .bg-white\/70) {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+/* Remove yellow/amber look globally and keep voucher-like theme */
+.mb-app-theme [class*="bg-amber-"],
+.mb-app-theme [class*="bg-yellow-"] {
+  background: linear-gradient(180deg, #ffffff 0%, #f0fdf4 100%) !important;
+}
+
+.mb-app-theme [class*="border-amber-"],
+.mb-app-theme [class*="border-yellow-"] {
+  border-color: color-mix(in srgb, var(--mb-primary) 22%, #d1fae5 78%) !important;
+}
+
+.mb-app-theme [class*="text-amber-"],
+.mb-app-theme [class*="text-yellow-"] {
+  color: #065f46 !important;
+}
